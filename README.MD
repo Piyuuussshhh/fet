@@ -35,3 +35,10 @@ $ git clone https://github.com/Piyuuussshhh/fet.git
 $ cd fet
 $ make
 ```
+
+## Write your own cipher!
+So the program is written in such a way that you can implement your own encryption/decryption function for this tool to use. All you need to do is:
+1. Write your own encryption & corresponding decryption function in `encryption/algorithms.c` & `decryption/algorithms.c` respectively.
+**NOTE**: Your functions should match the `void fn(const char*, char*, size_t, char*)` function signature.
+2. Register the functions in the corresponding `algorithms.h` header files.
+3. Pass them as function parameters to `encrypt_and_delete_txt()` & `decrypt_and_create_txt()` respectively.
