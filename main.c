@@ -8,12 +8,7 @@
 #include "decryption/algorithms.h"
 #include "fileio/fileio.h"
 
-/**
- * @brief Checks if a filepath ends with a specific extension.
- * @param filepath The full path to the file.
- * @param expected_ext The extension to check for (e.g., ".txt").
- * @return 0 on success (extensions match), -1 on failure.
- */
+int check_arguments(char *argv[]);
 int check_extension(const char *filepath, const char *expected_ext);
 
 int main(int argc, char *argv[]) {
