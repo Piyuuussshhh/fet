@@ -3,7 +3,9 @@
 #include <string.h>
 
 #include "encryption/encryption.h"
+#include "encryption/algorithms.h"
 #include "decryption/decryption.h"
+#include "decryption/algorithms.h"
 #include "fileio/fileio.h"
 
 int main(int argc, char *argv[]) {
@@ -15,15 +17,28 @@ int main(int argc, char *argv[]) {
 
     size_t file_size;
     char *file_contents = read_file(argv[2], &file_size);
-    printf("Read %zu bytes from file '%s'\n", file_size, argv[2]);
     if (!file_contents) {
+        fprintf(stderr, "Failed to read file: %s\n", argv[2]);
         return 1;
     }
+    printf("Read %zu bytes from file '%s'\n", file_size, argv[2]);
 
     if (strcmp(argv[1], "-e") == 0) {
-        encrypt_and_delete_txt(file_contents, file_size, argv[2], argv[4]);
+        encrypt_and_delete_txt(
+            file_contents,
+            file_size,
+            argv[2],
+            argv[4],
+            encrypt_XOR
+        );
     } else if (strcmp(argv[1], "-d") == 0) {
-        decrypt_and_create_txt(file_contents, file_size, argv[2], argv[4]);
+        decrypt_and_create_txt(
+            file_contents,
+            file_size,
+            argv[2],
+            argv[4],
+            decrypt_XOR
+        );
     } else {
         printf("Unknown command: %s\n", argv[1]);
         printf("Usage:\n\t%s -e path/to/file/to/be/encrypted\n", argv[0]);

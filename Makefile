@@ -5,10 +5,15 @@ CFLAGS = -Wall -Wextra -I.
 # Directories
 BUILD_DIR = build
 
-# Source files (let make find them)
-SRCS = main.c fileio/fileio.c encryption/encryption.c decryption/decryption.c
+# Source files
+SRCS = main.c \
+       fileio/fileio.c \
+       encryption/encryption.c \
+       encryption/algorithms.c \
+       decryption/decryption.c \
+       decryption/algorithms.c
 
-# Object files (place them in the build directory)
+# Object files (place them in the build directory, preserving structure)
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
 # Target executable (place it in the build directory)
