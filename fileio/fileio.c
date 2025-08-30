@@ -12,8 +12,6 @@
 #include <libgen.h>
 #include <fcntl.h>
 
-
-
 int _safety_checks(const char*, int);
 
 char* read_file(const char *path, size_t *file_size_out) {
