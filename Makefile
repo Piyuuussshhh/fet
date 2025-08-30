@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -I.
+CFLAGS = -std=c11 -Wall -Wextra -I.
 
 # Directories
 BUILD_DIR = build
